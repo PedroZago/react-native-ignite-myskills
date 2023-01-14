@@ -48,7 +48,9 @@ export const Home: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome, Pedro</Text>
+      <Text style={styles.title} testID="welcome">
+        Welcome, Pedro
+      </Text>
 
       <Text style={styles.greetings}>{greeting}</Text>
 
@@ -57,22 +59,27 @@ export const Home: React.FC = () => {
         placeholder="New skill"
         placeholderTextColor="#555"
         onChangeText={setNewSkill}
+        testID="input-new"
       />
 
-      <Button onPress={handleAddNewSkill} title="Add" />
+      <Button onPress={handleAddNewSkill} title="Add" testID="button-add" />
 
       <Text style={[styles.title, { marginVertical: 50 }]}>My skills</Text>
 
-      <FlatList
-        data={mySkills}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <SkillCard
-            skill={item.name}
-            onPress={() => handleRemoveSkill(item.id)}
-          />
-        )}
-      />
+      {!!mySkills && (
+        <FlatList
+          data={mySkills}
+          keyExtractor={item => item.id}
+          testID="flat-list-skills"
+          keyboardShouldPersistTaps="never"
+          renderItem={({ item }) => (
+            <SkillCard
+              skill={item.name}
+              onPress={() => handleRemoveSkill(item.id)}
+            />
+          )}
+        />
+      )}
     </View>
   );
 };
