@@ -24,5 +24,6 @@
     "editor.formatOnPaste": true
   },
   "javascript.format.enable": false,
-  "editor.cursorBlinking": "smooth"
+  "editor.cursorBlinking": "smooth",
+  "java.compile.nullAnalysis.mode": "automatic"
 }
